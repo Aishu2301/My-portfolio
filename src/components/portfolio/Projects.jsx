@@ -83,14 +83,13 @@ export default function Projects() {
                 </div>
                 
                 <div className="flex gap-4">
-                  <a
-                      href={cart-rush.base44.app}           // navigate to project link
-                      target="_blank"              // open in new tab
-                      rel="noopener noreferrer"    // security best practice
-                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200 group/btn">
-                      <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                  <button
+                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200 group/btn"
+                      onClick={() => window.open("https://cart-rush.base44.app", "_blank")}>
+                      <ExternalLink className="w-4 h-4" />
                       <span className="text-sm font-medium">Live Demo</span>
-                  </a>
+                  </button>
+
 
                 </div>
               </div>
