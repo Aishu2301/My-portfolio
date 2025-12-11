@@ -4,28 +4,32 @@ import { ExternalLink, ShoppingCart, MessageCircle, DollarSign } from 'lucide-re
 
 export default function Projects() {
   const projects = [
-    {
-      title: "CartRush",
-      description: "Full-stack e-commerce platform with AWS deployment and Stripe integration for secure payments",
-      icon: ShoppingCart,
-      tech: ["React.js", "Node.js", "AWS", "Stripe", "MongoDB"],
-      color: "from-blue-400 to-purple-600"
-    },
-    {
-      title: "LinkUp",
-      description: "Real-time chat application using Socket.io, Redis for caching, and Docker for containerization",
-      icon: MessageCircle,
-      tech: ["Socket.io", "Redis", "Docker", "React", "Node.js"],
-      color: "from-green-400 to-blue-500"
-    },
-    {
-      title: "FinTrack",
-      description: "Cross-platform finance tracker built with React Native and Firebase for real-time data sync",
-      icon: DollarSign,
-      tech: ["React Native", "Firebase", "JavaScript", "Mobile"],
-      color: "from-purple-400 to-pink-500"
-    }
-  ];
+  {
+    title: "CartRush",
+    description: "Full-stack e-commerce platform with AWS deployment and Stripe integration for secure payments",
+    icon: ShoppingCart,
+    tech: ["React.js", "Node.js", "AWS", "Stripe", "MongoDB"],
+    color: "from-blue-400 to-purple-600",
+    url: "https://cart-rush.base44.app"
+  },
+  {
+    title: "LinkUp",
+    description: "Real-time chat application using Socket.io, Redis for caching, and Docker for containerization",
+    icon: MessageCircle,
+    tech: ["Socket.io", "Redis", "Docker", "React", "Node.js"],
+    color: "from-green-400 to-blue-500",
+    url: "https://linkup.base44.app" // replace with your live URL
+  },
+  {
+    title: "FinTrack",
+    description: "Cross-platform finance tracker built with React Native and Firebase for real-time data sync",
+    icon: DollarSign,
+    tech: ["React Native", "Firebase", "JavaScript", "Mobile"],
+    color: "from-purple-400 to-pink-500",
+    url: "https://fintrack.base44.app" // replace with your live URL
+  }
+];
+
 
   return (
     <motion.section 
@@ -85,10 +89,12 @@ export default function Projects() {
                 <div className="flex gap-4">
                   <button
                       className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200 group/btn"
-                      onClick={() => window.open("https://cart-rush.base44.app", "_blank")}>
+                      onClick={() => window.open(project.url, "_blank")}
+                      >
                       <ExternalLink className="w-4 h-4" />
                       <span className="text-sm font-medium">Live Demo</span>
                   </button>
+
 
 
                 </div>
