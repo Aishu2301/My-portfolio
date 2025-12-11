@@ -1,7 +1,7 @@
 // src/components/portfolio/Projects.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, ShoppingCart, MessageCircle, DollarSign } from 'lucide-react';
+import { ExternalLink, Github, ShoppingCart, MessageCircle, DollarSign, Dices } from 'lucide-react';
 
 export default function Projects() {
   const projects = [
@@ -15,13 +15,13 @@ export default function Projects() {
       github: "https://github.com/Aishu2301/CartRush"
     },
     {
-      title: "LinkUp",
+      title: "ConnectSphere",
       description: "Real-time chat application using Socket.io, Redis for caching, and Docker for containerization",
       icon: MessageCircle,
       tech: ["Socket.io", "Redis", "Docker", "React", "Node.js"],
       color: "from-green-400 to-blue-500",
-      url: "https://linkup.example.com",
-      github: "https://github.com/Aishu2301/LinkUp" // replace with actual GitHub if exists
+      url: "https://connect-sphere-aish.base44.app/",
+      github: "https://github.com/Aishu2301/LinkUp"
     },
     {
       title: "FinTrack",
@@ -29,10 +29,89 @@ export default function Projects() {
       icon: DollarSign,
       tech: ["React Native", "Firebase", "JavaScript", "Mobile"],
       color: "from-purple-400 to-pink-500",
-      url: "https://fintrack.example.com",
-      github: "https://github.com/Aishu2301/FinTrack" // replace with actual GitHub if exists
+      url: "https://fin-track-aish.base44.app/",
+      github: "https://github.com/Aishu2301/FinTrack"
+    },
+    {
+      title: "Mini Projects",
+      description: "Interactive and fun games",
+      icon: Dices,
+      tech: ["JavaScript", "HTML5", "CSS3"],
+      color: "from-orange-400 to-red-500",
+      url: "https://mini-projects-hzmx7fh9y-aishwaryas-projects-77329530.vercel.app/",
+      github: "https://github.com/Aishu2301/MiniProjects"
     }
   ];
+
+  const ProjectCard = ({ project, index }) => (
+    <motion.div
+      key={project.title}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -10, scale: 1.02 }}
+      className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500"
+      style={{ pointerEvents: 'auto' }}
+    >
+      <div className="p-8 relative z-10">
+        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${project.color} p-3 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+          <project.icon className="w-8 h-8 text-white" />
+        </div>
+
+        <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
+          {project.title}
+        </h3>
+
+        <p className="text-slate-300 leading-relaxed mb-6 font-light">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 text-xs font-medium bg-white/10 text-slate-300 rounded-full border border-white/20"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex gap-4 relative z-20">
+          {/* Live Demo button */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.open(project.url, '_blank', 'noopener,noreferrer');
+            }}
+            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200 cursor-pointer border-none bg-transparent p-2 rounded hover:bg-blue-400/10"
+            style={{ pointerEvents: 'auto', position: 'relative', zIndex: 20 }}
+          >
+            <ExternalLink className="w-4 h-4" />
+            <span className="text-sm font-medium">Live Demo</span>
+          </button>
+
+          {/* GitHub button */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.open(project.github, '_blank', 'noopener,noreferrer');
+            }}
+            className="flex items-center gap-2 text-gray-300 hover:text-gray-100 transition-colors duration-200 cursor-pointer border-none bg-transparent p-2 rounded hover:bg-gray-300/10"
+            style={{ pointerEvents: 'auto', position: 'relative', zIndex: 20 }}
+          >
+            <Github className="w-4 h-4" />
+            <span className="text-sm font-medium">GitHub</span>
+          </button>
+        </div>
+      </div>
+
+      <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
+    </motion.div>
+  );
 
   return (
     <motion.section
@@ -43,6 +122,7 @@ export default function Projects() {
       className="relative z-10 py-24 px-6"
     >
       <div className="max-w-7xl mx-auto">
+        {/* Featured Projects Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,66 +136,7 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500"
-            >
-              <div className="p-8">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${project.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <project.icon className="w-8 h-8 text-white" />
-                </div>
-
-                <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
-                  {project.title}
-                </h3>
-
-                <p className="text-slate-300 leading-relaxed mb-6 font-light">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-xs font-medium bg-white/10 text-slate-300 rounded-full border border-white/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-4">
-                  {/* Live Demo button */}
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm font-medium">Live Demo</span>
-                  </a>
-
-                  {/* GitHub button */}
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-300 hover:text-gray-100 transition-colors duration-200"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm font-medium">GitHub</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-            </motion.div>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>
