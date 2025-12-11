@@ -11,7 +11,8 @@ export default function Projects() {
       icon: ShoppingCart,
       tech: ["React.js", "Node.js", "AWS", "Stripe", "MongoDB"],
       color: "from-blue-400 to-purple-600",
-      url: "https://cart-rush.base44.app"
+      url: "https://cart-rush.base44.app",
+      github: "https://github.com/Aishu2301/CartRush"
     },
     {
       title: "LinkUp",
@@ -19,7 +20,8 @@ export default function Projects() {
       icon: MessageCircle,
       tech: ["Socket.io", "Redis", "Docker", "React", "Node.js"],
       color: "from-green-400 to-blue-500",
-      url: "https://linkup.example.com"
+      url: "https://linkup.example.com",
+      github: "https://github.com/Aishu2301/LinkUp" // replace with actual GitHub if exists
     },
     {
       title: "FinTrack",
@@ -27,7 +29,8 @@ export default function Projects() {
       icon: DollarSign,
       tech: ["React Native", "Firebase", "JavaScript", "Mobile"],
       color: "from-purple-400 to-pink-500",
-      url: "https://fintrack.example.com"
+      url: "https://fintrack.example.com",
+      github: "https://github.com/Aishu2301/FinTrack" // replace with actual GitHub if exists
     }
   ];
 
@@ -87,13 +90,27 @@ export default function Projects() {
                 </div>
 
                 <div className="flex gap-4">
-                  <button
+                  {/* Live Demo button */}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
-                    onClick={() => window.open(project.url, "_blank")}
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm font-medium">Live Demo</span>
-                  </button>
+                  </a>
+
+                  {/* GitHub button */}
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gray-300 hover:text-gray-100 transition-colors duration-200"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span className="text-sm font-medium">GitHub</span>
+                  </a>
                 </div>
               </div>
 
