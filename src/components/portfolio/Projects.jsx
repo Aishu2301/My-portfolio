@@ -1,3 +1,4 @@
+// src/components/portfolio/Projects.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, ShoppingCart, MessageCircle, DollarSign } from 'lucide-react';
@@ -31,7 +32,7 @@ export default function Projects() {
   ];
 
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -39,7 +40,7 @@ export default function Projects() {
       className="relative z-10 py-24 px-6"
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
@@ -65,15 +66,15 @@ export default function Projects() {
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${project.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <project.icon className="w-8 h-8 text-white" />
                 </div>
-                
+
                 <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-slate-300 leading-relaxed mb-6 font-light">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech) => (
                     <span
@@ -84,20 +85,18 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex gap-4">
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
                     className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                    onClick={() => window.open(project.url, "_blank")}
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm font-medium">Live Demo</span>
-                  </a>
+                  </button>
                 </div>
               </div>
-              
+
               <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
             </motion.div>
           ))}
