@@ -87,17 +87,17 @@ export default function Projects() {
                 </div>
                 
                 <div className="flex gap-4">
-                  <button
-                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200 group/btn"
-                      onClick={() => window.open(project.url, "_blank")}
-                      >
-                      <ExternalLink className="w-4 h-4" />
-                      <span className="text-sm font-medium">Live Demo</span>
-                  </button>
-
-
-
+                  <a
+                    href={project.url} // use the url from the project object
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span className="text-sm font-medium">Live Demo</span>
+                  </a>
                 </div>
+
               </div>
               
               <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
